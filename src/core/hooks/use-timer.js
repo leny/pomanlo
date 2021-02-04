@@ -27,7 +27,7 @@ export const useTimer = (
             setRunning(false);
             onFinished();
         }
-    }, [seconds, setRunning]);
+    }, [seconds, setRunning, onFinished]);
 
     return [
         {running, seconds},
