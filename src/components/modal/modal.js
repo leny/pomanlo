@@ -29,11 +29,7 @@ const styles = {
     background: "rgba(0,0,0,0.5)",
 };
 
-const Modal = ({show = false, onClose, onRestart}) => {
-    if (!show) {
-        return null;
-    }
-
+const Modal = ({onClose, onRestart}) => {
     const [{running, seconds}, {setRunning}] = useTimer(
         BREAK_DURATION,
         true,

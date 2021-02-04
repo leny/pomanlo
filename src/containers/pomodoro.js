@@ -59,11 +59,9 @@ const Pomodoro = () => {
                     onPlus={handlePlus}
                 />
             </div>
-            <Modal
-                show={showModal}
-                onClose={handleCloseModal}
-                onRestart={handleRestart}
-            />
+            {showModal && (
+                <Modal onClose={handleCloseModal} onRestart={handleRestart} />
+            )}
         </div>
     );
 };
