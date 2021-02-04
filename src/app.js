@@ -11,4 +11,6 @@ import ReactDOM from "react-dom";
 
 import "bulma";
 
-ReactDOM.render(<p>{"Hello, World!"}</p>, document.querySelector("#app"));
+import Pomodoro from "./containers/pomodoro";
+
+ReactDOM.render(<Pomodoro />, document.querySelector("#app"));
