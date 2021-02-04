@@ -6,15 +6,15 @@
 
 ## About
 
-A small pomodoro with React, Bulma & Parcel.  
-Hosted on *TODO*.
+A small pomodoro with React, Bulma & Parcel.
+Hosted on [netlify](https://dazzling-mcclintock-c40e1f.netlify.app/).
 
 ## Installation
 
 - `npm install`
 - `npm run build`
 
-## Usage 
+## Usage
 
 Locally:
 
