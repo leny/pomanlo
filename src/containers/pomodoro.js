@@ -8,18 +8,20 @@
 
 import classnames from "classnames";
 
-import {useCallback} from "react";
+import {useCallback, useState} from "react";
 import {useTimer} from "../core/hooks/use-timer";
 import {SESSION_DURATION} from "../core/constants";
 
 import Display from "../components/display/display";
 import Tools from "../components/tools/tools";
+import Modal from "../components/modal/modal";
 
 const Pomodoro = () => {
-    const [{seconds, running}, {setSeconds, setRunning}] = useTimer(
-        SESSION_DURATION,
-        false,
-    );
+    const [showModal, setShowModal] = useState(false);
+    const [
+        {seconds, running},
+        {setSeconds, setRunning},
+    ] = useTimer(SESSION_DURATION, false, () => setShowModal(true));
 
     const handleMinus = useCallback(
         () => setSeconds(val => Math.max(val - 60, 0)),
@@ -35,6 +37,16 @@ const Pomodoro = () => {
         setSeconds,
     ]);
 
+    const handleCloseModal = useCallback(() => {
+        setShowModal(false);
+        handleReset();
+    }, [setShowModal, handleReset]);
+
+    const handleRestart = useCallback(() => {
+        handleCloseModal();
+        handleStartPause();
+    }, [handleCloseModal, handleStartPause]);
+
     return (
         <div className={classnames("columns", "is-mobile", "is-centered")}>
             <div className={classnames("column", "is-half")}>
@@ -47,6 +59,11 @@ const Pomodoro = () => {
                     onPlus={handlePlus}
                 />
             </div>
+            <Modal
+                show={showModal}
+                onClose={handleCloseModal}
+                onRestart={handleRestart}
+            />
         </div>
     );
 };
