@@ -6,7 +6,6 @@
  * started at 04/02/2021
  */
 
-import React from "react";
 import classnames from "classnames";
 
 const Pomodoro = () => (
