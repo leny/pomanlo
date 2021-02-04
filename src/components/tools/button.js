@@ -11,12 +11,7 @@ import classnames from "classnames";
 
 const Button = ({label, title, disabled = false, onClick}) => (
     <button
-        className={classnames(
-            "button",
-            "is-primary",
-            "is-medium",
-            "is-fullwidth",
-        )}
+        className={classnames("button", "is-dark", "is-medium", "is-fullwidth")}
         disabled={disabled}
         type={"button"}
         title={title || label}
