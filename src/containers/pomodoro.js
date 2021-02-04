@@ -6,6 +6,7 @@
  * started at 04/02/2021
  */
 
+import {useState} from "react";
 import classnames from "classnames";
 
 import Display from "../components/display/display";
@@ -14,9 +15,11 @@ import Tools from "../components/tools/tools";
 const seconds = 300;
 
 const Pomodoro = () => {
+    const [running, setRunning] = useState(false);
+
     const handleMinus = () => console.log("Remove one minute");
     const handleReset = () => console.log("Reset");
-    const handleStartPause = () => console.log("Start/Pause");
+    const handleStartPause = () => setRunning(!running);
     const handlePlus = () => console.log("Add one minute");
 
     return (
@@ -24,7 +27,7 @@ const Pomodoro = () => {
             <div className={classnames("column", "is-half")}>
                 <Display seconds={seconds} />
                 <Tools
-                    running={true}
+                    running={running}
                     onMinus={handleMinus}
                     onReset={handleReset}
                     onStartPause={handleStartPause}
