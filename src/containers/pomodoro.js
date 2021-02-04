@@ -6,16 +6,19 @@
  * started at 04/02/2021
  */
 
-import {useState} from "react";
 import classnames from "classnames";
+
+import {useTimer} from "../core/hooks/use-timer";
+import {SESSION_DURATION} from "../core/constants";
 
 import Display from "../components/display/display";
 import Tools from "../components/tools/tools";
 
-const seconds = 300;
-
 const Pomodoro = () => {
-    const [running, setRunning] = useState(false);
+    const [{seconds, running}, {setRunning}] = useTimer(
+        SESSION_DURATION,
+        false,
+    );
 
     const handleMinus = () => console.log("Remove one minute");
     const handleReset = () => console.log("Reset");
